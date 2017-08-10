@@ -7,4 +7,10 @@ contract HelloWorldContract {
     function getWord() constant returns (string) {
         return word;
     }
+
+    function setWord(string newWord) returns(string) {
+        word = newWord;
+        return word;
+
+    }
 }
