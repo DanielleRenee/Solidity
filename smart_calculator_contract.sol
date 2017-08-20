@@ -128,3 +128,90 @@ contract Calculator {
 }
 
 
+pragma solidity ^0.4.0;
+
+contract Calculator {
+    uint public stateStorage1;
+    // nothing called stateMemory! 
+    uint[] public stateStorage2 = [1, 2, 3, 4, 5];
+    uint[] public stateStorage3;
+   
+   
+   function copyNumber() returns (uint[]) {
+    //Define Variables
+    
+    uint[] storage localStorage1;
+    uint[] storage localStorage2;
+    uint[4] storage localStorage3;
+    uint[] memory localMemory1;
+    uint[] memory localMemory2;
+    uint[4] memory localMemory3 = [uint(6), 7, 8, 9];
+    uint[] memory localMemory4 = new uint[](2);
+    
+   }
+   
+ // default location of variables stored inside of function is storage.
+ 
+ //three types:
+ // 1. stateStorage
+ // 2. localStorage
+ // 3. localMemory
+ 
+ // in blockchain, space is very costly
+ 
+ // call data is a space from where retrieving any data is not possible
+ // it's an intermediate stage
+ // so, Call Data to Storage and Call Data to Memory are both not possible
+
+
+
+ WORKING VERSION: 
+
+ pragma solidity ^0.4.0;
+
+contract Calculator {
+    uint public stateStorage1;
+    // nothing called stateMemory! 
+    uint[] public stateStorage2 = [1, 2, 3, 4, 5];
+    uint[] public stateStorage3;
+   
+   
+   function copyNumber() returns (uint[], uint[]) {
+    //Define Variables
+    uint len;
+    uint[] storage localStorage1;
+    uint[] storage localStorage2;
+    uint[4] storage localStorage3;
+    uint[] memory localMemory1;
+    uint[] memory localMemory2;
+    uint[4] memory localMemory3 = [uint(6), 7, 8, 9];
+    uint[] memory localMemory4;
+    
+    
+    stateStorage3 = stateStorage2;
+    stateStorage2.push(6);
+    return (stateStorage3, stateStorage2);
+    
+   }
+   
+}
+
+
+*/ Push is avaibale only for Storage Data location -to add a value at the end of an array
+
+   default location of variables stored inside of function is storage.
+ 
+three types:
+ 1. stateStorage
+ 2. localStorage
+ 3. localMemory
+ 
+ // in blockchain, space is very costly
+ 
+ // call data is a space from where retrieving any data is not possible
+ // it's an intermediate stage
+ // so, Call Data to Storage and Call Data to Memory are both not possible
+ /*
+    
+
+
